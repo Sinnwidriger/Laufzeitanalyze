@@ -4,8 +4,10 @@ public class Program
 {
     public static void Main(string[] args)
     {
+        Console.SetBufferSize(130, 30);
+
         // List of lists with random values and different sizes from 1000 to 10000
-        var lists = Enumerable.Range(1, 10).Select(x => Helpers.GetRandomList(1000 * x));
+        var lists = Enumerable.Range(1, 10).Select(x => Helpers.GetRandomList(10 * x));
 
         // Making Test runs due to "list's native caching mechanism" that impacts on measure times
         var bubbleTimesTestRun = lists.Select(x => Helpers.MeasureSortingTime(x, SortingMethods.BubbleSort)).ToList();
